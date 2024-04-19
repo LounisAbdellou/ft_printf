@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 19:57:23 by labdello          #+#    #+#             */
-/*   Updated: 2024/04/18 22:39:48 by labdello         ###   ########.fr       */
+/*   Created: 2024/04/18 22:16:35 by labdello          #+#    #+#             */
+/*   Updated: 2024/04/19 11:52:33 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-// #include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_printf(const char *format, ...)
-{
-	(void)format;
-	return (0);
-}
+# include <stdarg.h>
 
-#include <stdio.h>
-int main()
-{
-	ft_putchar('c');
-	printf("%s\n", "test42");
-	ft_printf("%s\n", "test42");
-	return (0);
-}
+void	ft_putchar(char c);
+
+#endif
