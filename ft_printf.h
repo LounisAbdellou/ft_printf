@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 22:16:35 by labdello          #+#    #+#             */
-/*   Updated: 2024/04/23 22:45:12 by labdello         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:03:14 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
+void	ft_putnbr(int nbr);
 
 #endif

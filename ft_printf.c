@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:57:23 by labdello          #+#    #+#             */
-/*   Updated: 2024/04/23 23:01:34 by labdello         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:10:09 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_printf(const char *format, ...)
 		if (next_char == 'c')
 			ft_putchar((int)va_arg(args, int));
 		else if (next_char == 'd')
-			ft_putchar((int)va_arg(args, int));
+			ft_putnbr((int)va_arg(args, int));
 		else if (next_char == 's')
 			ft_putstr((char *)va_arg(args, const char *));
 		i++;
@@ -48,6 +48,8 @@ int main()
 	// ft_putchar('c');
 	// printf("%s\n", "test42");
 	// ft_printf("%s\n", "test42");
-	ft_printf("%c => .\n", 'c');
+	ft_printf("char => %c\n", 'c');
+	ft_printf("int => %d\n", 42);
+	ft_printf("char * => %s\n", "Hello World");
 	return (0);
 }
