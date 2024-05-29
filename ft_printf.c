@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:57:23 by labdello          #+#    #+#             */
-/*   Updated: 2024/05/29 18:33:05 by labdello         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:52:33 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_handle_str_convertion(char *str)
 	size_t	len;
 
 	len = ft_strlen(str);
-	ft_putstr(str);
+	ft_putstr_fd(str, 1);
 	return (len);
 }
 
@@ -26,7 +26,7 @@ int	ft_handle_digit_convertion(int nbr)
 	size_t	len;
 
 	len = ft_nbrlen(nbr);
-	ft_putnbr(nbr);
+	ft_putnbr_fd(nbr, 1);
 	return (len);
 }
 
@@ -44,7 +44,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			ft_putchar(format[i]);
+			ft_putchar_fd(format[i], 1);
 			i++;
 			count++;
 			continue ;
@@ -52,7 +52,7 @@ int	ft_printf(const char *format, ...)
 		next_char = format[++i];
 		if (next_char == 'c')
 		{
-			ft_putchar((int)va_arg(args, int));
+			ft_putchar_fd((int)va_arg(args, int), 1);
 			count++;
 		}
 		else if (next_char == 'd')

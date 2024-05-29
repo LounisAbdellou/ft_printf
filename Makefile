@@ -2,24 +2,27 @@ NAME = libftprintf.a
 CC = cc
 AR = ar rcs
 CFLAGS = -Wall -Wextra -Werror
+SRCS = ft_printf.c
+OBJS = ${SRCS:.c=.o}
 
-SRCS = ft_putchar.c ft_putstr.c ft_putnbr.c ft_nbrlen.c ft_strlen.c
-
-OBJS = $(SRCS:.c=.o)
-
-all: $(NAME)
+all: ${NAME}
 
 .c.o:
-	$(CC) $(CFLAGS) -c -I. $< -o $(<:.c=.o)
+	${CC} ${CFLAGS} -c -I. $< -o ${<:.c=.o}
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+${NAME}: ${OBJS}
+	@make -C libft
+	@cp libft/libft.a .
+	@mv libft.a ${NAME}
+	${AR} ${NAME} ${OBJS}
 
 clean:
-	rm -f $(OBJS) $(OBJSB)
+	@make clean -C libft
+	rm -f ${OBJS}
 
 fclean:		clean
-	rm -f $(NAME)
+	rm -f libft/libft.a
+	rm -f ${NAME}
 
 re:	fclean all
 
