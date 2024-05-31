@@ -6,13 +6,13 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:57:23 by labdello          #+#    #+#             */
-/*   Updated: 2024/05/29 18:52:33 by labdello         ###   ########.fr       */
+/*   Updated: 2024/05/31 16:53:51 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_handle_str_convertion(char *str)
+int	ft_handle_str(char *str)
 {
 	size_t	len;
 
@@ -21,7 +21,7 @@ int	ft_handle_str_convertion(char *str)
 	return (len);
 }
 
-int	ft_handle_digit_convertion(int nbr)
+int	ft_handle_digit(int nbr)
 {
 	size_t	len;
 
@@ -30,11 +30,39 @@ int	ft_handle_digit_convertion(int nbr)
 	return (len);
 }
 
+int	ft_handle_unsigned(unsigned int nbr)
+{
+	size_t	len;
+
+	len = ft_unbrlen(nbr);
+	ft_putunbr_fd(nbr, 1);
+	return (len);
+}
+
+void	ft_display(va_list args, size_t *count, char convertion)
+{
+	if (convertion == '%')
+	{
+		ft_putchar_fd('%', 1);
+		*count += 1;
+	}
+	else if (convertion == 'c')
+	{
+		ft_putchar_fd((int)va_arg(args, int), 1);
+		*count += 1;
+	}
+	else if (convertion == 'd' || convertion == 'i')
+		*count += ft_handle_digit((int)va_arg(args, int));
+	else if (convertion == 'u')
+		*count += ft_handle_unsigned((unsigned int)va_arg(args, unsigned int));
+	else if (convertion == 's')
+		*count += ft_handle_str((char *)va_arg(args, const char *));
+}
+
 int	ft_printf(const char *format, ...)
 {
 	size_t	i;
 	size_t	count;
-	char	next_char;
 	va_list	args;
 
 	i = 0;
@@ -49,25 +77,16 @@ int	ft_printf(const char *format, ...)
 			count++;
 			continue ;
 		}
-		next_char = format[++i];
-		if (next_char == 'c')
-		{
-			ft_putchar_fd((int)va_arg(args, int), 1);
-			count++;
-		}
-		else if (next_char == 'd')
-			ft_handle_digit_convertion((int)va_arg(args, int));
-		else if (next_char == 's')
-			ft_handle_str_convertion((char *)va_arg(args, const char *));
+		ft_display(args, &count, format[++i]);
 		i++;
 	}
 	va_end(args);
 	return (count);
 }
-//
+
 // #include <stdio.h>
 // int main()
 // {
-// 	ft_printf(" %s\n", "test");
+// 	printf(" NULL %s NULL ", NULL);
 // 	return (0);
 // }

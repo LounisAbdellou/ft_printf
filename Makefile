@@ -2,7 +2,7 @@ NAME = libftprintf.a
 CC = cc
 AR = ar rcs
 CFLAGS = -Wall -Wextra -Werror
-SRCS = ft_printf.c
+SRCS = ft_printf.c ft_putunbr_fd.c ft_unbrlen.c
 OBJS = ${SRCS:.c=.o}
 
 all: ${NAME}
@@ -26,4 +26,9 @@ fclean:		clean
 
 re:	fclean all
 
-.PHONY: all clean fclean re
+libft: 
+	@make -C libft
+	@cp libft/libft.a .
+	@make fclean -C libft
+
+.PHONY: all clean fclean re libft
