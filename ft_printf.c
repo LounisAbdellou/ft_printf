@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:57:23 by labdello          #+#    #+#             */
-/*   Updated: 2024/05/31 16:53:51 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/02 19:12:52 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,15 @@ int	ft_handle_unsigned(unsigned int nbr)
 	return (len);
 }
 
+int ft_handle_hex(unsigned int hex, char convertion)
+{
+	size_t  len;
+
+	len = ft_hexlen(hex);
+	ft_puthex_fd(hex, ft_isupper(convertion), 1);
+	return (len);
+}
+
 void	ft_display(va_list args, size_t *count, char convertion)
 {
 	if (convertion == '%')
@@ -57,6 +66,8 @@ void	ft_display(va_list args, size_t *count, char convertion)
 		*count += ft_handle_unsigned((unsigned int)va_arg(args, unsigned int));
 	else if (convertion == 's')
 		*count += ft_handle_str((char *)va_arg(args, const char *));
+	else if (convertion == 'h' || convertion == 'H')
+		*count += ft_handle_hex((unsigned int)va_arg(args, unsigned int), convertion);
 }
 
 int	ft_printf(const char *format, ...)
