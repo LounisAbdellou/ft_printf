@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:40:36 by labdello          #+#    #+#             */
-/*   Updated: 2024/05/31 18:44:27 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/02 21:24:54 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,4 @@ void	ft_puthexa(void *ptr)
         ft_putchar_fd(hex_digit((p >> i) & 0xf), 1);
     }
 	ft_putchar_fd('\n', 1);
-}
-
-int main()
-{
-	char c = 'c';
-	ft_puthexa(&c);
-	printf("%p\n", &c);
 }

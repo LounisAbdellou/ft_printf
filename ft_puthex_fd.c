@@ -6,9 +6,11 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 19:11:42 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/02 19:21:39 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/02 21:36:15 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 void	ft_puthex_fd(unsigned int hex, int capitilize, int fd)
 {
@@ -19,14 +21,14 @@ void	ft_puthex_fd(unsigned int hex, int capitilize, int fd)
 	}
 	else
 	{
-		if (num <= 9)
+		if (hex <= 9)
 			ft_putchar_fd(hex + 48, fd);
 		else
 		{
 			if (capitilize)
-				ft_putchar_fd(hex + 65, fd);
+				ft_putchar_fd((hex - 10) + 65, fd);
 			else
-				ft_putchar_fd(hex + 97, fd);
+				ft_putchar_fd((hex - 10) + 97, fd);
 		}
 	}
 }

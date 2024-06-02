@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:57:23 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/02 19:12:52 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/02 21:55:23 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,44 @@ int ft_handle_hex(unsigned int hex, char convertion)
 	return (len);
 }
 
+size_t	ft_ptrlen(unsigned long long ptr)
+{
+	size_t			count;
+
+	count = 1;
+	while (ptr / 16 >= 1)
+	{
+		ptr = ptr / 16;
+		count++;
+	}
+	return (count);
+}
+
+void	ft_putptr(unsigned long long ptr)
+{
+	if (ptr >= 16)
+	{
+		ft_putptr(ptr / 16);
+		ft_putptr(ptr % 16);
+	}
+	else
+	{
+		if (ptr <= 9)
+			ft_putchar_fd(ptr + 48, 1);
+		else
+			ft_putchar_fd((ptr - 10) + 97, 1);
+	}
+}
+
+int	ft_handle_ptr(unsigned long long ptr)
+{
+	size_t	len;
+
+	len = ft_ptrlen(ptr);
+	ft_putptr(ptr);
+	return (len);
+}
+
 void	ft_display(va_list args, size_t *count, char convertion)
 {
 	if (convertion == '%')
@@ -57,17 +95,19 @@ void	ft_display(va_list args, size_t *count, char convertion)
 	}
 	else if (convertion == 'c')
 	{
-		ft_putchar_fd((int)va_arg(args, int), 1);
+		ft_putchar_fd(va_arg(args, int), 1);
 		*count += 1;
 	}
 	else if (convertion == 'd' || convertion == 'i')
-		*count += ft_handle_digit((int)va_arg(args, int));
+		*count += ft_handle_digit(va_arg(args, int));
 	else if (convertion == 'u')
-		*count += ft_handle_unsigned((unsigned int)va_arg(args, unsigned int));
+		*count += ft_handle_unsigned(va_arg(args, unsigned int));
 	else if (convertion == 's')
-		*count += ft_handle_str((char *)va_arg(args, const char *));
-	else if (convertion == 'h' || convertion == 'H')
-		*count += ft_handle_hex((unsigned int)va_arg(args, unsigned int), convertion);
+		*count += ft_handle_str(va_arg(args, char *));
+	else if (convertion == 'x' || convertion == 'X')
+		*count += ft_handle_hex(va_arg(args, unsigned int), convertion);
+	else if (convertion == 'p')
+		*count += ft_handle_ptr(va_arg(args, unsigned long long));
 }
 
 int	ft_printf(const char *format, ...)
@@ -94,10 +134,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-// 	printf(" NULL %s NULL ", NULL);
-// 	return (0);
-// }

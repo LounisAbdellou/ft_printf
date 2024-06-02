@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 22:16:35 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/02 19:22:32 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/02 21:23:50 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ size_t	ft_nbrlen(int nbr);
 size_t	ft_unbrlen(unsigned int nbr);
 size_t	ft_strlen(const char *str);
 size_t	ft_hexlen(unsigned int hex);
+int		ft_isupper(int c);
 int		ft_printf(const char *format, ...);
 
 #endif
