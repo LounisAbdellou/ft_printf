@@ -6,11 +6,12 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:34:51 by labdello          #+#    #+#             */
-/*   Updated: 2024/05/31 16:47:39 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:13:38 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 void	ft_putunbr_fd(unsigned int nbr, int fd)
 {

@@ -6,11 +6,12 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:57:23 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/02 21:55:23 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:14:05 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 int	ft_handle_str(char *str)
 {
@@ -82,6 +83,7 @@ int	ft_handle_ptr(unsigned long long ptr)
 	size_t	len;
 
 	len = ft_ptrlen(ptr);
+	ft_putstr_fd("0x", 1);
 	ft_putptr(ptr);
 	return (len);
 }
@@ -105,7 +107,7 @@ void	ft_display(va_list args, size_t *count, char convertion)
 	else if (convertion == 's')
 		*count += ft_handle_str(va_arg(args, char *));
 	else if (convertion == 'x' || convertion == 'X')
-		*count += ft_handle_hex(va_arg(args, unsigned int), convertion);
+		*count += ft_handle_hex(va_arg(args, unsigned long long), convertion);
 	else if (convertion == 'p')
 		*count += ft_handle_ptr(va_arg(args, unsigned long long));
 }
@@ -133,4 +135,10 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(args);
 	return (count);
+}
+
+int main()
+{
+	char c = 'c';
+	ft_printf("'%p'\n", &c);
 }

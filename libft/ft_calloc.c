@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 16:16:43 by labdello          #+#    #+#             */
-/*   Updated: 2024/05/29 17:27:42 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:28:22 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
 
-	if (!(nmemb * size))
-		return (malloc(0));
+	if (nmemb == 0 || size == 0)
+	{
+		nmemb = 1;
+		size = 1;
+	}
 	ptr = (void *)malloc(size * nmemb);
 	if (!ptr)
 		return (NULL);

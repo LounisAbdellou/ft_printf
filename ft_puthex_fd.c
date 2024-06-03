@@ -6,11 +6,12 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 19:11:42 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/02 21:36:15 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:13:32 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 void	ft_puthex_fd(unsigned int hex, int capitilize, int fd)
 {

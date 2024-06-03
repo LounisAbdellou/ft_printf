@@ -1,4 +1,5 @@
 NAME = libft.a
+INCLUDES = ../includes/
 CC = cc
 AR = ar rcs
 CFLAGS = -Wall -Wextra -Werror
@@ -23,7 +24,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 .c.o:
-	$(CC) $(CFLAGS) -c -I. $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -c -I $(INCLUDES) $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
