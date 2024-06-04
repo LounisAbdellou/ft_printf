@@ -6,14 +6,14 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 19:11:42 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/04 19:23:02 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/04 19:44:25 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void	ft_puthex_fd(unsigned long long hex, int capitilize, int fd)
+void	ft_puthex_fd(unsigned int hex, int capitilize, int fd)
 {
 	if (hex >= 16)
 	{
