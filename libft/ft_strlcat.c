@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 23:32:13 by labdello          #+#    #+#             */
-/*   Updated: 2024/04/21 02:33:31 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/04 12:24:19 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ size_t	ft_strlcat(char *dest, char *src, size_t n)
 	size_t	dest_len;
 
 	i = 0;
+	if (!n)
+		return (ft_strlen(src));
 	src_len = ft_strlen(src);
 	dest_len = ft_strlen(dest);
 	if (n <= dest_len)

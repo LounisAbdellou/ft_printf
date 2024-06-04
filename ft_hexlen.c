@@ -6,13 +6,13 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 19:16:06 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/02 21:33:28 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/04 19:00:21 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_hexlen(unsigned int hex)
+size_t	ft_hexlen(unsigned long long hex)
 {
 	size_t			count;
 

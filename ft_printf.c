@@ -6,11 +6,12 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:57:23 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/02 21:55:23 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/04 19:32:38 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 int	ft_handle_str(char *str)
 {
@@ -39,50 +40,17 @@ int	ft_handle_unsigned(unsigned int nbr)
 	return (len);
 }
 
-int ft_handle_hex(unsigned int hex, char convertion)
+int ft_handle_hex(unsigned long long hex, char convertion)
 {
 	size_t  len;
 
 	len = ft_hexlen(hex);
+	if (convertion == 'p')
+	{
+		ft_putstr_fd("0x", 1);
+		len += 2;
+	}
 	ft_puthex_fd(hex, ft_isupper(convertion), 1);
-	return (len);
-}
-
-size_t	ft_ptrlen(unsigned long long ptr)
-{
-	size_t			count;
-
-	count = 1;
-	while (ptr / 16 >= 1)
-	{
-		ptr = ptr / 16;
-		count++;
-	}
-	return (count);
-}
-
-void	ft_putptr(unsigned long long ptr)
-{
-	if (ptr >= 16)
-	{
-		ft_putptr(ptr / 16);
-		ft_putptr(ptr % 16);
-	}
-	else
-	{
-		if (ptr <= 9)
-			ft_putchar_fd(ptr + 48, 1);
-		else
-			ft_putchar_fd((ptr - 10) + 97, 1);
-	}
-}
-
-int	ft_handle_ptr(unsigned long long ptr)
-{
-	size_t	len;
-
-	len = ft_ptrlen(ptr);
-	ft_putptr(ptr);
 	return (len);
 }
 
@@ -104,10 +72,8 @@ void	ft_display(va_list args, size_t *count, char convertion)
 		*count += ft_handle_unsigned(va_arg(args, unsigned int));
 	else if (convertion == 's')
 		*count += ft_handle_str(va_arg(args, char *));
-	else if (convertion == 'x' || convertion == 'X')
-		*count += ft_handle_hex(va_arg(args, unsigned int), convertion);
-	else if (convertion == 'p')
-		*count += ft_handle_ptr(va_arg(args, unsigned long long));
+	else if (convertion == 'x' || convertion == 'X' || convertion == 'p')
+		*count += ft_handle_hex(va_arg(args, unsigned long long), convertion);
 }
 
 int	ft_printf(const char *format, ...)

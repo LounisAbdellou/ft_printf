@@ -1,14 +1,15 @@
 NAME = libftprintf.a
+INCLUDES = ./includes/
 CC = cc
 AR = ar rcs
 CFLAGS = -Wall -Wextra -Werror
-SRCS = ft_printf.c ft_putunbr_fd.c ft_unbrlen.c
+SRCS = ft_printf.c ft_putunbr_fd.c ft_unbrlen.c ft_puthex_fd.c ft_hexlen.c
 OBJS = ${SRCS:.c=.o}
 
 all: ${NAME}
 
 .c.o:
-	${CC} ${CFLAGS} -c -I. $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -c -I $(INCLUDES) $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJS}
 	@make -C libft
