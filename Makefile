@@ -3,7 +3,10 @@ INCLUDES = ./includes/
 CC = cc
 AR = ar rcs
 CFLAGS = -Wall -Wextra -Werror
-SRCS = ft_printf.c ft_putunbr_fd.c ft_unbrlen.c ft_puthex_fd.c ft_hexlen.c
+
+SRCS = ft_printf.c ft_putunbr_fd.c ft_unbrlen.c ft_puthex_fd.c ft_hexlen.c \
+	   ft_ptrlen.c ft_putptr.c ft_handlers.c
+
 OBJS = ${SRCS:.c=.o}
 
 all: ${NAME}
